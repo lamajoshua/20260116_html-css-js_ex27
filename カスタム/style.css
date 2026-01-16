@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* スクロールバーを出さない */
+    background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%); /* 深い夜空の色 */
+    height: 100vh;
+    width: 100vw;
+}
+
+#snow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* 雪の粒子の共通スタイル */
+.particle {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%; /* 完全な丸 */
+    pointer-events: none; /* マウス操作を邪魔しない */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* 雪の輝き（ぼかし） */
+    
+    /* アニメーション設定（時間はJSでランダムにするのでここでは名前とカーブだけ） */
+    animation-name: fall-diagonal;
+    animation-timing-function: linear;
+    animation-iteration-count: 1; /* 1回落ちたら終わり（JSで削除するから） */
+}
+
+/* 斜めに降るアニメーション定義 */
+@keyframes fall-diagonal {
+    0% {
+        transform: translate(0, -10px); /* 画面の少し上から開始 */
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* 降り始めですぐ見えるように */
+    }
+    100% {
+        /* Y軸: 110vh (画面下よりさらに下まで)
+           X軸: 15vw (右に少し流れる＝斜め) 
+           ※左に流したい場合は -15vw にしてください
+        */
+        transform: translate(15vw, 110vh); 
+        opacity: 0.5;
+    }
+}

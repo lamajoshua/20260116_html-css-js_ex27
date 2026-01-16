@@ -1,0 +1,58 @@
+
+@charset "utf-8";
+
+/* ローディング画面のスタイル */
+#loading {
+  /* 全画面を覆う */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* 中央配置 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #0bd;
+  
+  /* フェードアウトのアニメーション用 */
+  transition: 1s ease;  
+  z-index: 9999; /* 一番手前に表示するための指定 */
+}
+.spinner {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border-radius: 100%;
+  animation: sk-scaleout 1s infinite ease-in-out;
+}
+
+/* ローディングアニメーション */
+@keyframes sk-scaleout {
+  0% {
+    scale: 0;
+  } 100% {
+    scale: 1;
+    opacity: 0;
+  }
+}
+
+/* ローディング完了時 */
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 基本スタイル */
+body {
+  padding: 1rem;
+}
+p {
+  max-width: 600px;
+}
+img {
+  width: 100%;
+  max-width: 600px;
+}
